@@ -34,31 +34,6 @@ COPY flaskapp.wsgi /var/www/FlaskApp
 
 WORKDIR /
 
-COPY ctf_db.sql /
-
-# start the service
-# RUN sudo service mysql start && sleep 10
-
-# RUN service --status-all && sleep 10
-
-# # Configure the database
-# RUN mysql -u root < ctf_db.sql
-
-# # Anonieme user verwijderen
-# RUN mysql -e "DELETE FROM mysql.user WHERE User='';"
-
-# # Root users verwijderen die vanaf buitenaf kunnen verbinden
-# RUN mysql -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-
-# # Nieuwe user aanmaken om mee te verbinden
-# RUN  mysql -e "CREATE USER 'ctf'@'localhost' IDENTIFIED BY 'super1s2t3r3o5n6gu7n7g89u0e0ssablepassword';"
-
-# # De juiste privileges instellen zodat de user read en write kan uitvoeren.
-# RUN mysql -e "GRANT ALL PRIVILEGES ON ctf_db.* TO 'ctf'@'localhost' WITH GRANT OPTION;"
-
-# # Flush de privileges zodat de oude privileges hierboven worden toegepast
-# RUN mysql -e "FLUSH PRIVILEGES;"
-
 EXPOSE 80/tcp
 
 # EXPOSE 3306

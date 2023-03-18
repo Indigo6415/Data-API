@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import os
-import json
 
 # Initialize the flask instance called application
 application = Flask(__name__)
 application.secret_key = os.urandom(256)
+
 
 # Initialize the rate limiter called limiter
 limiter = Limiter(
@@ -25,4 +25,4 @@ def get_ip():
 
 
 if __name__ == "__main__":
-    application.run(host="0.0.0.0", port=80, debug=False)
+    application.run(host="127.0.0.1", port=5000, debug=False)
