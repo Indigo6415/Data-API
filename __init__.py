@@ -17,12 +17,14 @@ limiter = Limiter(
     strategy="fixed-window"
 )
 
+defaultRateLimit = "100 per minute"
+
 # Decorate the get_ip function with the flask route and the rate limiter
-@application.route("/api/ip", methods=["GET"])
-@limiter.limit("100 per minute")
+@application.route("/api/get-ip", methods=["GET"])
+@limiter.limit(defaultRateLimit)
 def get_ip():
     return request.remote_addr
 
 
 if __name__ == "__main__":
-    application.run(host="127.0.0.1", port=5000, debug=False)
+    application.run(host="0.0.0.0", port=80, debug=False)
