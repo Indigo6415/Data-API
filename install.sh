@@ -16,7 +16,7 @@ sudo a2enmod wsgi ### De WSGI mod enablen.
 sudo apt install python3-pip -y ### Python package manager installeren.
 sudo pip3 install Flask ### De Python Flask package installeren.
 sudo pip3 install mysql-connector-python==8.0.29 ### De Python mysql-connector installeren. (Specefiek versie 8.0.29 installeren om te voorkomen dat het niet werkt en dat je error codes krijgt (zoals UFT-8 errors). )
-
+sudo pip3 install Flask-Limiter
 
 
 #########################################
@@ -63,7 +63,7 @@ logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/FlaskApp/")
 
 from FlaskApp import application
-application.secret_key = os.urandom(12)
+application.secret_key = os.urandom(256)
 EOF
 
 
